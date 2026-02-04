@@ -28846,7 +28846,7 @@ echartsProto.dispose = function () {
         chart.dispose(ecModel, api);
     });
 
-    // Dispose after all views disposed
+    // Dispose after all view disposed
     this._zr.dispose();
 
     delete instances[this.id];
@@ -69250,7 +69250,7 @@ registerProcessor(PRIORITY.PROCESSOR.STATISTIC, function (ecModel, api) {
         = collect(ecModel, api);
 });
 
-// Broadcast to all views.
+// Broadcast to all view.
 registerAction({
     type: 'updateAxisPointer',
     event: 'updateAxisPointer',
@@ -75455,7 +75455,7 @@ registerPreprocessor(function (option) {
         }
         else {
             // Only one graphic instance can be instantiated. (We dont
-            // want that too many views are created in echarts._viewMap)
+            // want that too many view are created in echarts._viewMap)
             option.graphic = [option.graphic[0]];
         }
     }

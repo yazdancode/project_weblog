@@ -26,8 +26,8 @@
                         <span class="menu-title" data-i18n="Chat">دسته بندی</span>
                     </a>
                 </li>
-                <li class=" nav-item ">
-                    <a href=""><i class="feather icon-check-square"></i>
+                <li class=" nav-item <?= sidebarActive(route('admin.post.index')) ?>">
+                    <a href="<?= route('admin.post.index')?>"><i class="feather icon-check-square"></i>
                         <span class="menu-title" data-i18n="Todo">اخبار</span>
                     </a>
                 </li>

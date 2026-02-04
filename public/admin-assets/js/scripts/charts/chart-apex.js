@@ -280,7 +280,7 @@ $(document).ready(function () {
       y: {
         formatter: function (y) {
           if (typeof y !== "undefined") {
-            return y.toFixed(0) + " views";
+            return y.toFixed(0) + " view";
           }
           return y;
 
