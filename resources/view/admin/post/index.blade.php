@@ -37,8 +37,8 @@
                                             <td><?= $post->user()->first_name . ' ' . $post->user()->last_name  ?></td>
                                             <td><img style="width: 90px;" src="<?= asset($post->image ) ?>" alt=""></td>
                                             <td style="min-width: 16rem; text-align: left;">
-                                                <a href="#" class="btn btn-info waves-effect waves-light">ویرایش</a>
-                                                <form class="d-inline" action="#" method="post">
+                                                <a href="<?= route('admin.post.edit' , ['id' => $post->id])?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
+                                                <form class="d-inline" action="<?= route('admin.post.delete', ['id' => $post->id])?>" method="post">
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>
                                                 </form>
@@ -54,6 +54,4 @@
             </div>
         </section>
     </div>
-
-
 @endsection
