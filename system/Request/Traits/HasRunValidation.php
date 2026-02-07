@@ -37,4 +37,9 @@ trait HasRunValidation
     {
         return in_array($name, $this->errorVariablesName);
     }
+
+    protected function error(string $key, string $message): void
+    {
+        $this->errors[$key] = $message;
+    }
 }

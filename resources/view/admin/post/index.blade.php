@@ -12,7 +12,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">اخبار</h4>
-                            <span><a href="#" class="btn btn-success">ایجاد</a></span>
+                            <span><a href="<?= route('admin.post.create')?>" class="btn btn-success">ایجاد</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">

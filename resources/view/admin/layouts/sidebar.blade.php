@@ -1,4 +1,5 @@
 
+    <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
@@ -14,43 +15,17 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
                 <li class=" navigation-header"><span>لینک ها</span></li>
-                <li class=" nav-item <?= sidebarActive(route('admin.index'), false) ?>">
-                    <a href="<?= route('admin.index') ?>"><i class="feather icon-mail"></i>
-                        <span class="menu-title" data-i18n="Email">خانه</span>
-                    </a>
-                </li>
-                <li class=" nav-item <?= sidebarActive(route('admin.category.index')) ?>">
-                    <a href="<?= route('admin.category.index')?>">
-                        <i class="feather icon-message-square"></i>
-                        <span class="menu-title" data-i18n="Chat">دسته بندی</span>
-                    </a>
-                </li>
-                <li class=" nav-item <?= sidebarActive(route('admin.post.index')) ?>">
-                    <a href="<?= route('admin.post.index')?>"><i class="feather icon-check-square"></i>
-                        <span class="menu-title" data-i18n="Todo">اخبار</span>
-                    </a>
-                </li>
-                <li class=" nav-item">
-                    <a href=""><i class="feather icon-calendar"></i>
-                        <span class="menu-title" data-i18n="Calender">آگهی</span>
-                    </a>
-                </li>
-                <li class=" nav-item ">
-                    <a href=""><i class="feather icon-calendar"></i>
-                        <span class="menu-title" data-i18n="Calender">اسلاید شو</span>
-                    </a>
-                </li>
-                <li class=" nav-item"><a href="">
-                        <i class="feather icon-calendar"></i>
-                        <span class="menu-title" data-i18n="Calender">نظرات</span>
-                    </a>
-                </li>
-                <li class=" nav-item"><a href="">
-                        <i class="feather icon-calendar"></i>
-                        <span class="menu-title" data-i18n="Calender">کاربران</span>
-                    </a>
-                </li>
+                <li class=" nav-item <?= sidebarActive(route('admin.index'), false) ?>"><a href="<?= route('admin.index') ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">خانه</span></a></li>
+                <li class=" nav-item <?= sidebarActive(route('admin.category.index')) ?> "><a href="<?= route('admin.category.index') ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
+                <li class=" nav-item <?= sidebarActive(route('admin.post.index')) ?>"><a href="<?= route('admin.post.index') ?>"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">اخبار</span></a></li>
+                <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">آگهی</span></a></li>
+                <li class=" nav-item "><a href=""><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">اسلاید شو</span></a></li>
+                <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">نظرات</span></a></li>
+                <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">کاربران</span></a></li>
+
             </ul>
         </div>
     </div>
+    <!-- END: Main Menu-->

@@ -16,6 +16,8 @@ class Request
     protected $files = null;
     protected $errorVariablesName = [];
 
+    protected $errors = [];
+
     public function __construct()
     {
         if(isset($_POST)) {

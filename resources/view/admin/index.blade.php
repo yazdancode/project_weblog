@@ -2,6 +2,7 @@
 @section('head-tag')
     <title>Admin</title>
 @endsection
+
 @section('content')
     <div class="content-body">
         <section id="dashboard-analytics">

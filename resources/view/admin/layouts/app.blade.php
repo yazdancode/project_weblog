@@ -1,50 +1,65 @@
-@php use System\Auth\Auth; @endphp
-        <!doctype html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <title>@include('admin.layouts.head-tag')</title>
-    @yield('head-tag')
+   @include('admin.layouts.head-tag')
+   @yield('head-tag')
 </head>
 
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click"
-      data-menu="vertical-menu-modern" data-col="2-columns">
-<nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
-    <div class="navbar-wrapper">
-        <div class="navbar-container content">
-            <div class="navbar-collapse" id="navbar-mobile">
-                <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
-                    <ul></ul>
-                </div>
-                <ul class="nav navbar-nav float-right">
-                    <li class="dropdown dropdown-user nav-item">
-                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="user-nav d-sm-flex d-none"><span
-                                        class="user-name text-bold-600"><?= Auth::user()->first_name . ' ' . Auth::user()->last_name ?></span>
-                                <span class="user-status active">آنلاین </span>
+<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
+        <div class="navbar-wrapper">
+            <div class="navbar-container content">
+                <div class="navbar-collapse" id="navbar-mobile">
+                    <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
+                        <ul></ul>
+                    </div>
+                    <ul class="nav navbar-nav float-right">
+
+                        <li class="dropdown dropdown-user nav-item">
+                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"><?= \System\Auth\Auth::user()->first_name . ' ' . \System\Auth\Auth::user()->last_name ?></span>
+                                    <span class="user-status active">آنلاین </span>
+                                </div>
+                                    <span><img class="round" src="<?= asset(\System\Auth\Auth::user()->avatar) ?>" alt="avatar" height="40" width="40"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href=""><i class="feather icon-power"></i> خروج</a>
                             </div>
-                            <span><img class="round" src="<?= asset(Auth::user()->avatar) ?>" alt="avatar" height="40"
-                                       width="40"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href=""><i class="feather icon-power"></i> خروج</a>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+
+                        
+                    </ul>
+                </div>
             </div>
         </div>
+    </nav>
+
+
+
+    @include('admin.layouts.sidebar')
+
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+
+            @yield('content')
+
+
+        </div>
     </div>
-</nav>
-@include('admin.layouts.sidebar')
-<div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
-    <div class="content-wrapper">
-        @yield('content')
-    </div>
-</div>
-<div class="sidenav-overlay"></div>
-<div class="drag-target"></div>
-@include('admin.layouts.scripts')
-@yield('script')
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    @include('admin.layouts.scripts')
+    @yield('script')
 </body>
+
 </html>
