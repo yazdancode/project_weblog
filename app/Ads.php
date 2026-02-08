@@ -14,6 +14,8 @@ class Ads extends Model
         'floor', 'year', 'storeroom', 'balcony', 'area', 'room', 'toilet', 'parking', 'tag',
         'status', 'user_id', 'cat_id', 'sell_status', 'type', 'view'];
     protected $deletedAt = 'deleted_at';
+    private $sell_status;
+    private $type;
 
     public function galleries()
     {
@@ -30,7 +32,7 @@ class Ads extends Model
         return $this->belongsTo('\App\Category', 'cat_id', 'id');
     }
 
-    public function sellStatus()
+    public function sellStatus(): string
     {
         return ($this->sell_status == 0) ? 'اجاره' : 'خرید';
     }

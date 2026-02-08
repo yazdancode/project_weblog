@@ -28,7 +28,5 @@ class PostRequest extends Request
                 'published_at'=>'required|date'
             ];
         }
-
-
     }
 }
