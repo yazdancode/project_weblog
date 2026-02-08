@@ -104,7 +104,7 @@ trait HasQueryBuilder
         $query .= ' ;';
         $pdoInstance = DBConnection::getDBConnectionInstance();
         $statement = $pdoInstance->prepare($query);
-       sizeof($this->bindValues) > 0 ? $statement->execute($this->bindValues) : $statement->execute();
+        sizeof($this->bindValues) > 0 ? $statement->execute($this->bindValues) : $statement->execute();
         return $statement;
     }
 
