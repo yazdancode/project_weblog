@@ -3,8 +3,7 @@
     <title>ادمین / گالری</title>
 @endsection
 @section('content')
-    <div class="content-header row">
-    </div>
+    <div class="content-header row"></div>
     <div class="content-body">
         <section id="basic-datatable">
             <div class="row">
@@ -33,7 +32,7 @@
                                 <div class="col-md-12 mt-4 pt-4">
                                     <div class="row">
                                         <div class="col-md-3 text-center">
-                                            <div><img style="width: 100%;" src="../admin-assets/images/elements/apple-watch.png" alt=""></div>
+                                            <div><img style="width: 100%;" src="<?php asset('admin-assets/images/elements/apple-watch.png')?>" alt=""></div>
                                             <a class="btn btn-danger mt-1" href="#">حذف</a>
                                         </div>
                                     </div>
@@ -45,5 +44,4 @@
             </div>
         </section>
     </div>
-
 @endsection
