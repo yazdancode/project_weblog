@@ -8,11 +8,8 @@
 
 
 @section('content')
-    <div class="content-header row">
-    </div>
-
+    <div class="content-header row"></div>
     <div class="content-body">
-        <!-- Zero configuration table -->
         <section id="basic-datatable">
             <div class="row">
                 <div class="col-12">
@@ -23,7 +20,6 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
-
                                 <div class="">
                                     <table class="table zero-configuration">
                                         <thead>
@@ -80,7 +76,5 @@
                 </div>
             </div>
         </section>
-        <!--/ Zero configuration table -->
     </div>
-
 @endsection

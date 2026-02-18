@@ -9,7 +9,7 @@ Route::get('edit/{id}', 'HomeController@edit', 'edit');
 Route::put('/update/{id}', 'HomeController@update', 'update');
 Route::delete('/delete/{id}', 'HomeController@destroy', 'delete');
 
-//admin routes 
+//admin routes
 Route::get('/admin', 'Admin\AdminController@index', 'admin.index');
 
 //category routes
@@ -37,4 +37,14 @@ Route::put('/admin/ads/update/{id}', 'Admin\AdsController@update', 'admin.ads.up
 Route::delete('/admin/ads/delete/{id}', 'Admin\AdsController@destroy', 'admin.ads.delete');
 Route::get('/admin/ads/gallery/{id}', 'Admin\AdsController@gallery', 'admin.ads.gallery');
 Route::post('/admin/ads/store-gallery-image/{id}', 'Admin\AdsController@storeGalleryImage', 'admin.ads.store.gallery.image');
-Route::get('/admin/ads/delete-gallery-image/{gallery_id}', 'Admin\AdsController@deletealleryImage', 'admin.ads.delete.gallery.image');
+Route::get('/admin/ads/delete-gallery-image/{gallery_id}', 'Admin\AdsController@deleteGalleryImage', 'admin.ads.delete.gallery.image');
+
+
+//slideshow routes
+Route::get('/admin/slide', 'Admin\SlideController@index', 'admin.slide.index');
+Route::get('/admin/slide/create', 'Admin\SlideController@create', 'admin.slide.create');
+Route::post('/admin/slide/store', 'Admin\SlideController@store', 'admin.slide.store');
+Route::get('/admin/slide/edit/{id}', 'Admin\SlideController@edit', 'admin.slide.edit');
+Route::put('/admin/slide/update/{id}', 'Admin\SlideController@update', 'admin.slide.update');
+Route::delete('admin/slide/delete/{id}', 'Admin\SlideController@destroy', 'admin.slide.delete');
+

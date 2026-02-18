@@ -23,7 +23,7 @@ class AdsController extends AdminController
         return view('admin.ads.create', compact('categories'));
     }
 
-    
+
     public function store(): null
     {
         $request = new AdsRequest();
@@ -67,7 +67,7 @@ class AdsController extends AdminController
     {
         Ads::delete($id);
         return back();
-        
+
     }
 
 
@@ -75,7 +75,7 @@ class AdsController extends AdminController
     {
         $advertise  = Ads::find($id);
         $galleries = Gallery::where('advertise_id', $id)->get();
-        return view('admin.ads.gallery', compact('advertise', 'galleries')); 
+        return view('admin.ads.gallery', compact('advertise', 'galleries'));
     }
 
     public function storeGalleryImage($id)
