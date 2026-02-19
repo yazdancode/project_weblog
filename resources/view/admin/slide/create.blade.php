@@ -5,9 +5,6 @@
 @section('head-tag')
 <title>ادمین / اسلایدشو</title>
 @endsection
-
-
-
 @section('content')
 
     <div class="content-header row">
