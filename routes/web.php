@@ -61,3 +61,8 @@ Route::get('/admin/user', 'Admin\UserController@index', 'admin.user.index');
 Route::get('/admin/user/edit/{id}', 'Admin\UserController@edit', 'admin.user.edit');
 Route::put('/admin/user/update/{id}', 'Admin\UserController@update', 'admin.user.update');
 Route::get('admin/user/change-status/{id}', 'Admin\UserController@changeStatus', 'admin.user.change.status');
+
+
+//auth routes
+Route::get('/register', 'Auth\RegisterController@view', 'auth.register.view');
+
