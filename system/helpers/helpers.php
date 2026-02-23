@@ -1,18 +1,14 @@
 <?php
 
-use JetBrains\PhpStorm\NoReturn;
-use System\View\ViewBuilder;
-
-function dd($value, $die = true): void
-{
+function dd($value, $die = true){
     var_dump($value);
     if($die)
         exit();
 }
 
-function view($dir, $vars = []): void
+function view($dir, $vars = [])
 {
-    $viewBuilder = new ViewBuilder();
+    $viewBuilder = new \System\View\ViewBuilder();
     $viewBuilder->run($dir);
     $viewVars = $viewBuilder->vars;
     $content = $viewBuilder->content;
@@ -22,14 +18,19 @@ function view($dir, $vars = []): void
     eval(" ?> ".html_entity_decode($content));
 }
 
-function html($text): string
+function html($text)
 {
     return html_entity_decode($text);
 }
 
 function old($name)
 {
-    return $_SESSION["temporary_old"][$name] ?? null;
+    if(isset($_SESSION["temporary_old"][$name])){
+        return $_SESSION["temporary_old"][$name];
+    }
+    else{
+        return null;
+    }
 }
 
 function flash($name, $message = null)
@@ -49,9 +50,9 @@ function flash($name, $message = null)
     }
 }
 
-function flashExists($name): bool
+function flashExists($name)
 {
-    return isset($_SESSION["temporary_flash"][$name]) === true;
+    return isset($_SESSION["temporary_flash"][$name]) === true ? true : false;
 }
 
 function allFlashes()
@@ -84,9 +85,9 @@ function error($name, $message = null)
     }
 }
 
-function errorExists($name): bool
+function errorExists($name)
 {
-    return isset($_SESSION["temporary_errorFlash"][$name]) === true;
+    return isset($_SESSION["temporary_errorFlash"][$name]) === true ? true : false;
 }
 
 function allErrors()
@@ -102,35 +103,33 @@ function allErrors()
 }
 
 
-function currentDomain(): string
+function currentDomain()
 {
     $httpProtocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === "on") ? "https://" : "http://";
     $currentUrl = $_SERVER['HTTP_HOST'];
     return $httpProtocol.$currentUrl;
 }
 
-#[NoReturn]
-function redirect($url): void
+function redirect($url)
 {
     $url = trim($url, '/ ');
-    $url = str_starts_with($url, currentDomain()) ?  $url : currentDomain() . '/' . $url;
+    $url = strpos($url, currentDomain()) === 0 ?  $url : currentDomain() . '/' . $url;
     header("Location: ".$url);
     exit;
 }
 
-#[NoReturn]
-function back(): void
+function back()
 {
-    $http_referer = $_SERVER['HTTP_REFERER'] ?? null;
+    $http_referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
     redirect($http_referer);
 }
 
-function asset($src): string
+function asset($src)
 {
     return currentDomain().("/".trim($src, "/ "));
 }
 
-function url($url): string
+function url($url)
 {
     return currentDomain().("/".trim($url, "/ "));
 }
@@ -150,10 +149,7 @@ function findRouteByName($name)
     return $route;
 }
 
-/**
- * @throws Exception
- */
-function route($name, $params = []): string
+function route($name, $params = [])
 {
     if(!is_array($params))
     {
@@ -179,12 +175,12 @@ function route($name, $params = []): string
     return currentDomain()."/".trim($route, " /");
 }
 
-function generateToken(): string
+function generateToken()
 {
     return bin2hex(openssl_random_pseudo_bytes(32));
 }
 
-function methodField(): string
+function methodField()
 {
     $method_field = strtolower($_SERVER['REQUEST_METHOD']);
     if($method_field == 'post')
@@ -217,7 +213,7 @@ function array_dot($array, $return_array = array(), $return_key = '') {
 }
 
 
-function currentUrl(): string
+function currentUrl()
 {
     return currentDomain() . $_SERVER['REQUEST_URI'];
 }
