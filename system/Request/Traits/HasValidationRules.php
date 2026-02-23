@@ -174,7 +174,6 @@ trait HasValidationRules
             }
         }
     }
-
     protected function confirm($name)
     {
         if ($this->checkFieldExist($name)) {
