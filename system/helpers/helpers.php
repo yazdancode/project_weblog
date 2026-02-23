@@ -217,3 +217,9 @@ function currentUrl()
 {
     return currentDomain() . $_SERVER['REQUEST_URI'];
 }
+
+function hasErrors()
+{
+    return isset($_SESSION["temporary_errorFlash"])
+        && count($_SESSION["temporary_errorFlash"]) > 0;
+}
