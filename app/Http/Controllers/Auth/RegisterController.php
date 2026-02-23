@@ -60,6 +60,4 @@ class RegisterController{
         die('حساب کاربری فعال شد');
 
     }
-
-
 }

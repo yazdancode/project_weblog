@@ -23,19 +23,30 @@ trait HasValidationRules
                 $rule = explode(',', $rule);
                 $key = isset($rule[1]) == false ? null : $rule[1];
                 $this->existsIn($name, $rule[0], $key);
-            } elseif ($rule == 'email') {
+            }
+            elseif (strpos($rule, "unique:") === 0) {
+                $rule = str_replace('unique:', "", $rule);
+                $rule = explode(',', $rule);
+                $key = isset($rule[1]) == false ? null : $rule[1];
+                $this->unique($name, $rule[0], $key);
+            }
+            elseif ($rule == 'confirmed') {
+                $this->confirm($name);
+            }
+            elseif ($rule == 'email') {
                 $this->email($name);
-            } elseif ($rule == 'date') {
+            }
+            elseif ($rule == 'date') {
                 $this->date($name);
             }
         }
     }
 
-        public function numberValidation($name, $ruleArray)
+    public function numberValidation($name, $ruleArray)
     {
         foreach($ruleArray as $rule){
             if($rule == 'required')
-            $this->required($name);
+                $this->required($name);
             elseif(strpos($rule, "max:") === 0)
             {
                 $rule = str_replace('max:', "", $rule);
@@ -64,7 +75,7 @@ trait HasValidationRules
     {
         if($this->checkFieldExist($name)){
             if (strlen($this->request[$name]) >= $count && $this->checkFirstError($name)){
-                $this->setError($name, "max length equal or lower than $count character");
+                $this->setError($name, "$name max length equal or lower than $count character");
             }
         }
     }
@@ -73,7 +84,7 @@ trait HasValidationRules
     {
         if($this->checkFieldExist($name)){
             if (strlen($this->request[$name]) <= $count && $this->checkFirstError($name)){
-                $this->setError($name, "min length equal or upper than $count character");
+                $this->setError($name, "$name min length equal or upper than $count character");
             }
         }
     }
@@ -82,7 +93,7 @@ trait HasValidationRules
     {
         if($this->checkFieldExist($name)){
             if ($this->request[$name] >= $count && $this->checkFirstError($name)){
-                $this->setError($name, "max number equal or lower than $count character");
+                $this->setError($name, " $name max number equal or lower than $count character");
             }
         }
     }
@@ -91,7 +102,7 @@ trait HasValidationRules
     {
         if($this->checkFieldExist($name)){
             if ($this->request[$name] <= $count && $this->checkFirstError($name)){
-                $this->setError($name, "min number equal or upper than $count character");
+                $this->setError($name, "$name min number equal or upper than $count character");
             }
         }
     }
@@ -116,9 +127,9 @@ trait HasValidationRules
     protected function date($name)
     {
         if($this->checkFieldExist($name)){
-           if(!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$this->request[$name]) && $this->checkFirstError($name)){
-            $this->setError($name,"$name must be date format");
-           }
+            if(!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$this->request[$name]) && $this->checkFirstError($name)){
+                $this->setError($name,"$name must be date format");
+            }
         }
     }
 
@@ -147,6 +158,36 @@ trait HasValidationRules
             }
         }
     }
+
+    public function unique($name, $table, $field = "id")
+    {
+        if($this->checkFieldExist($name)){
+            if($this->checkFirstError($name)){
+                $value = $this->$name;
+                $sql = "SELECT COUNT(*) FROM $table WHERE $field = ?";
+                $statement = DBConnection::getDBConnectionInstance()->prepare($sql);
+                $statement->execute([$value]);
+                $result = $statement->fetchColumn();
+                if($result != 0){
+                    $this->setError($name,"$name must be unique");
+                }
+            }
+        }
+    }
+
+    protected function confirm($name)
+    {
+        if ($this->checkFieldExist($name)) {
+            $fieldName = "confirm_".$name;
+            if(!isset($this->$fieldName)){
+                $this->setError($name, " $name $fieldName not exist");
+            }
+            elseif($this->$fieldName != $this->$name){
+                $this->setError($name, "$name confirmation does not match");
+            }
+        }
+    }
+
 
 
 }
