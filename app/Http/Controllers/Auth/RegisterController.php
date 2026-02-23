@@ -45,4 +45,21 @@ class RegisterController{
 
         return redirect($this->redirectTo);
     }
+
+
+    public function activation($token)
+    {
+        $user = User::where('verify_token', $token)->get();
+        if(empty($user))
+        {
+            die('کد اعتبار ندارد');
+        }
+        $user = $user[0];
+        $user->is_active = 1;
+        $user->save();
+        die('حساب کاربری فعال شد');
+
+    }
+
+
 }

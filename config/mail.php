@@ -2,14 +2,14 @@
 
 return [
     'SMTP' => [
-        'Host'       => '',
+        'Host'       => 'smtp.gmail.com',
         'SMTPAuth'   => true,
-        'Username'   => '33',
-        'Password'   => '22',
+        'Username'   => 'yshabanei@gmail.com',
+        'Password'   => '09102779237aass',
         'Port'       => 587,
         'setFrom'    => [
-            'mail'  =>  'support@amlak.com',
-            'name'  =>  'test'
+            'mail'  =>  'yshabanei@gmail.com',
+            'name'  =>  'php-mvc'
         ]
     ]
 ];
