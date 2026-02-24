@@ -17,66 +17,67 @@
                         <div class="card-content">
                             <div class="card-body card-dashboard">
                                 <form class="row" action="<?= route("admin.ads.store") ?>" method="post" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="title">عنوان</label>
-                                            <input value="<?= old('title') ?>"  name="title" type="text" id="title" class="form-control <?= errorClass('title') ?>" placeholder="عنوان ...">
+                                            <input value="<?= old('title') ?>" name="title" type="text" id="title" class="form-control <?= errorClass('title') ?>" placeholder="عنوان ...">
                                             <?= errorText('title') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="image">تصویر</label>
-                                            <input name="image" type="file" id="image" class="form-control-file <?= errorClass('file') ?>">
-                                            <?= errorText('file') ?>
+                                            <input name="image" type="file" id="image" class="form-control-file <?= errorClass('image') ?>">
+                                            <?= errorText('image') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="address">آدرس</label>
-                                            <input value="<?= old('address') ?>"  name="address" type="text" id="address" class="form-control <?= errorClass('address') ?>" placeholder="آدرس ...">
+                                            <input value="<?= old('address') ?>" name="address" type="text" id="address" class="form-control <?= errorClass('address') ?>" placeholder="آدرس ...">
                                             <?= errorText('address') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
-                                            <label for="floor">کف</label>
-                                            <input value="<?= old('floor') ?>"  name="floor" type="text" id="floor" class="form-control <?= errorClass('floor') ?>" placeholder="کف ...">
+                                            <label for="floor">طبقه</label>
+                                            <input value="<?= old('floor') ?>" name="floor" type="text" id="floor" class="form-control <?= errorClass('floor') ?>" placeholder="طبقه ...">
                                             <?= errorText('floor') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="year">سال ساخت</label>
-                                            <input value="<?= old('year') ?>"  name="year" type="text" id="year" class="form-control <?= errorClass('year') ?>" placeholder="سال ساخت ...">
+                                            <input value="<?= old('year') ?>" name="year" type="text" id="year" class="form-control <?= errorClass('year') ?>" placeholder="سال ساخت ...">
                                             <?= errorText('year') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="amount">قیمت</label>
-                                            <input value="<?= old('amount') ?>"  name="amount" type="text" id="amount" class="form-control <?= errorClass('amount') ?>" placeholder="قیمت ...">
+                                            <input value="<?= old('amount') ?>" name="amount" type="text" id="amount" class="form-control <?= errorClass('amount') ?>" placeholder="قیمت ...">
                                             <?= errorText('amount') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="area">متراژ</label>
-                                            <input value="<?= old('area') ?>"  name="area" type="text" id="area" class="form-control <?= errorClass('area') ?>" placeholder="سال ساخت ...">
+                                            <input value="<?= old('area') ?>" name="area" type="text" id="area" class="form-control <?= errorClass('area') ?>" placeholder="متراژ ...">
                                             <?= errorText('area') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="room">اتاق</label>
-                                            <input value="<?= old('room') ?>" name="room" type="text" id="room" class="form-control <?= errorClass('room') ?>" placeholder="سال ساخت ...">
+                                            <input value="<?= old('room') ?>" name="room" type="text" id="room" class="form-control <?= errorClass('room') ?>" placeholder="تعداد اتاق ...">
                                             <?= errorText('room') ?>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="tag">تگ</label>
-                                            <input value="<?= old('tag') ?>"  name="tag" type="text" id="tag" class="form-control <?= errorClass('tag') ?>" placeholder="تگ ...">
+                                            <input value="<?= old('tag') ?>" name="tag" type="text" id="tag" class="form-control <?= errorClass('tag') ?>" placeholder="تگ ...">
                                             <?= errorText('tag') ?>
                                         </fieldset>
                                     </div>
@@ -92,8 +93,8 @@
                                             <div class="form-group">
                                                 <label for="storeroom">انبار</label>
                                                 <select name="storeroom" class="select2 form-control <?= errorClass('storeroom') ?>">
-                                                    <option value="0">ندارد</option>
-                                                    <option value="1">دارد</option>
+                                                    <option value="0" <?= old('storeroom') == '0' ? 'selected' : '' ?>>ندارد</option>
+                                                    <option value="1" <?= old('storeroom') == '1' ? 'selected' : '' ?>>دارد</option>
                                                 </select>
                                                 <?= errorText('storeroom') ?>
                                             </div>
@@ -104,8 +105,8 @@
                                             <div class="form-group">
                                                 <label for="balcony">بالکن</label>
                                                 <select name="balcony" class="select2 form-control <?= errorClass('balcony') ?>">
-                                                    <option value="0">ندارد</option>
-                                                    <option value="1">دارد</option>
+                                                    <option value="0" <?= old('balcony') == '0' ? 'selected' : '' ?>>ندارد</option>
+                                                    <option value="1" <?= old('balcony') == '1' ? 'selected' : '' ?>>دارد</option>
                                                 </select>
                                                 <?= errorText('balcony') ?>
                                             </div>
@@ -116,9 +117,9 @@
                                             <div class="form-group">
                                                 <label for="toilet">توالت</label>
                                                 <select name="toilet" class="select2 form-control <?= errorClass('toilet') ?>">
-                                                    <option value="ایرانی">ایرانی</option>
-                                                    <option value="فرنگی">فرنگی</option>
-                                                    <option value="ایرانی و فرنگی">ایرانی و فرنگی</option>
+                                                    <option value="ایرانی" <?= old('toilet') == 'ایرانی' ? 'selected' : '' ?>>ایرانی</option>
+                                                    <option value="فرنگی" <?= old('toilet') == 'فرنگی' ? 'selected' : '' ?>>فرنگی</option>
+                                                    <option value="ایرانی و فرنگی" <?= old('toilet') == 'ایرانی و فرنگی' ? 'selected' : '' ?>>ایرانی و فرنگی</option>
                                                 </select>
                                                 <?= errorText('toilet') ?>
                                             </div>
@@ -129,8 +130,8 @@
                                             <div class="form-group">
                                                 <label for="sell_status">نوع آگهی</label>
                                                 <select name="sell_status" class="select2 form-control <?= errorClass('sell_status') ?>">
-                                                    <option value="0">خرید</option>
-                                                    <option value="1">اجاره</option>
+                                                    <option value="0" <?= old('sell_status') == '0' ? 'selected' : '' ?>>خرید</option>
+                                                    <option value="1" <?= old('sell_status') == '1' ? 'selected' : '' ?>>اجاره</option>
                                                 </select>
                                                 <?= errorText('sell_status') ?>
                                             </div>
@@ -141,10 +142,10 @@
                                             <div class="form-group">
                                                 <label for="type">نوع ملک</label>
                                                 <select name="type" class="select2 form-control <?= errorClass('type') ?>">
-                                                    <option value="0">آپارتمان</option>
-                                                    <option value="1">ویلایی</option>
-                                                    <option value="2">زمین</option>
-                                                    <option value="3">سوله</option>
+                                                    <option value="0" <?= old('type') == '0' ? 'selected' : '' ?>>آپارتمان</option>
+                                                    <option value="1" <?= old('type') == '1' ? 'selected' : '' ?>>ویلایی</option>
+                                                    <option value="2" <?= old('type') == '2' ? 'selected' : '' ?>>زمین</option>
+                                                    <option value="3" <?= old('type') == '3' ? 'selected' : '' ?>>سوله</option>
                                                 </select>
                                                 <?= errorText('type') ?>
                                             </div>
@@ -155,8 +156,8 @@
                                             <div class="form-group">
                                                 <label for="parking">پارکینگ</label>
                                                 <select name="parking" class="select2 form-control <?= errorClass('parking') ?>">
-                                                    <option value="0">ندارد</option>
-                                                    <option value="1">دارد</option>
+                                                    <option value="0" <?= old('parking') == '0' ? 'selected' : '' ?>>ندارد</option>
+                                                    <option value="1" <?= old('parking') == '1' ? 'selected' : '' ?>>دارد</option>
                                                 </select>
                                                 <?= errorText('parking') ?>
                                             </div>
@@ -168,7 +169,10 @@
                                                 <label for="cat_id">دسته</label>
                                                 <select name="cat_id" class="select2 form-control <?= errorClass('cat_id') ?>">
                                                     <?php foreach ($categories as $categorySelect) { ?>
-                                                    <option value="<?= $categorySelect->id ?>"><?= $categorySelect->name ?></option>
+                                                    {* اصلاح: بررسی مقدار قبلی برای انتخاب دسته بندی *}
+                                                    <option value="<?= $categorySelect->id ?>" <?= old('cat_id') == $categorySelect->id ? 'selected' : '' ?>>
+                                                            <?= $categorySelect->name ?>
+                                                    </option>
                                                     <?php } ?>
                                                 </select>
                                                 <?= errorText('cat_id') ?>
@@ -190,9 +194,13 @@
         </section>
     </div>
 @endsection
+
 @section('script')
     <script src="<?= asset('ckeditor/ckeditor.js'); ?>"></script>
     <script type="text/javascript">
-        CKEDITOR.replace( 'description' );
+        CKEDITOR.replace( 'description', {
+            language: 'fa',
+            contentsLangDirection: 'rtl'
+        });
     </script>
 @endsection

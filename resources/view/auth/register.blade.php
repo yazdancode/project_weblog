@@ -3,7 +3,30 @@
 @section('head-tag')
     <title>صفحه ثبت نام</title>
     <link rel="stylesheet" href="<?= asset('admin-assets/css-rtl/pages/authentication.css') ?>">
+
+    <!-- کدهای CSS داخلی اختصاصی همین صفحه -->
+    <style>
+        /* مثال: تنظیم عرض تصویر سمت راست */
+        .bg-authentication img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* مثال: فاصله بین فیلدها */
+        .form-label-group {
+            margin-bottom: 1.5rem;
+        }
+
+        /* استایل دلخواه برای پیام خطا */
+        .alert-danger {
+            font-size: 13px;
+            padding: 10px 15px;
+        }
+
+        /* اینجا می‌توانید استایل‌های دیگر را اضافه کنید */
+    </style>
 @endsection
+
 @section('content')
     <div class="content-header row">
     </div>
@@ -13,7 +36,7 @@
                 <div class="card bg-authentication rounded-0 mb-0">
                     <div class="row m-0">
                         <div class="col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
-                            <img src="admin-assets/images/pages/register.jpg" alt="branding logo">
+                            <img src="<?= asset('admin-assets/images/pages/register.jpg') ?>" alt="branding logo">
                         </div>
                         <div class="col-lg-6 col-12 p-0">
                             <div class="card rounded-0 mb-0 p-2">
@@ -25,7 +48,7 @@
                                 <p class="px-2">برای ایجاد حساب اطلاعات زیر را وارد کنید</p>
                                 <?php if(hasErrors()) { ?>
                                 <div class="alert alert-danger">
-                                    <ul style="list-style-type:none">
+                                    <ul style="list-style-type:none; padding-right: 0;">
                                             <?php foreach(allErrors() as $error) { ?>
                                         <li>
                                                 <?= $error ?>
@@ -36,7 +59,8 @@
                                 <?php } ?>
                                 <div class="card-content">
                                     <div class="card-body pt-0">
-                                        <form action="" method="post" enctype="multipart/form-data">
+                                        <!-- اضافه کردن آدرس route به اکشن فرم -->
+                                        <form action="<?= route('auth.register') ?>" method="post" enctype="multipart/form-data">
                                             <div class="form-label-group">
                                                 <input type="text" name="first_name" id="first_name" class="form-control" placeholder="نام" required>
                                                 <label for="first_name">نام</label>
@@ -58,7 +82,7 @@
                                                 <label for="password">کلمه عبور</label>
                                             </div>
                                             <div class="form-label-group">
-                                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="تکرار کلمه عبور" required>
                                                 <label for="confirm_password">تکرار کلمه عبور</label>
                                             </div>
                                             <div class="form-group row">
@@ -70,13 +94,13 @@
                                                                         <span class="vs-checkbox--check">
                                                                             <i class="vs-icon feather icon-check"></i>
                                                                         </span>
-                                                        </span>
+                                                            </span>
                                                             <span class=""> قوانین و مقررات را پذیرفته ام</span>
                                                         </div>
                                                     </fieldset>
                                                 </div>
                                             </div>
-                                            <a href="" class="btn btn-outline-primary float-left btn-inline mb-50">ورود</a>
+                                            <a href="<?= route('auth.login.view') ?>" class="btn btn-outline-primary float-left btn-inline mb-50">ورود</a>
                                             <button type="submit" class="btn btn-primary float-right btn-inline mb-50">ثبت اطلاعات</button>
                                         </form>
                                     </div>
@@ -89,5 +113,4 @@
         </section>
 
     </div>
-
 @endsection

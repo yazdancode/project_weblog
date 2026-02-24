@@ -1,11 +1,22 @@
 @extends('admin.layouts.page')
 
-
-
 @section('head-tag')
-<title>پنل ورود</title>
-<link rel="stylesheet" type="text/css" href="<?= asset('admin-assets/css-rtl/pages/authentication.css') ?>">
+    <title>پنل ورود</title>
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin-assets/css-rtl/pages/authentication.css') ?>">
+    <style>
+        .card-header {
+            background-color: #f7f7f7;
+        }
+        .btn-primary {
+            background-color: #5e72e4;
+            border-color: #5e72e4;
+        }
+        .card-body {
+            padding: 2rem;
+        }
+    </style>
 @endsection
+
 @section('content')
     <div class="content-header row"></div>
     <div class="content-body">
@@ -25,13 +36,13 @@
                                 </div>
                                 <p class="px-2">لطفا اطلاعات خود را وارد کنید</p>
                                 <?php if (hasErrors()) {?>
-                                    <div class="alert alert-danger">
-                                        <ul>
+                                <div class="alert alert-danger">
+                                    <ul>
                                             <?php foreach (allErrors() as $error) { ?>
-                                                <li><?= $error ?></li>
-                                            <?php } ?>
-                                        </ul>
-                                    </div>
+                                        <li><?= $error ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
                                 <?php } ?>
                                 <div class="card-content">
                                     <div class="card-body pt-1">
@@ -82,5 +93,4 @@
         </section>
 
     </div>
-
 @endsection
