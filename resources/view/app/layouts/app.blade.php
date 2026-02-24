@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>@include('app.layouts.head-tag')</title>
     @yield('head-tag')
 </head>
-
 <body class="text-right">
     @include('app.layouts.navbar')
     @yield('content')
@@ -14,5 +12,4 @@
     @include('app.layouts.scripts')
     @yield('script')
 </body>
-
 </html>
