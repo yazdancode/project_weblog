@@ -69,5 +69,7 @@ Route::post('/login', 'Auth\LoginController@login', 'auth.login');
 Route::get('/register', 'Auth\RegisterController@view', 'auth.register.view');
 Route::post('/register', 'Auth\RegisterController@register', 'auth.register');
 Route::get('/activation/{token}', 'Auth\RegisterController@activation', 'auth.activation');
+Route::get('/forgot', 'Auth\ForgotController@view', 'auth.forgot.password');
+Route::post('/forgot', 'Auth\ForgotController@forgot', 'auth.forgot');
 
 
