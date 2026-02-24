@@ -5,7 +5,7 @@ return [
         'Host'       => 'smtp.gmail.com',
         'SMTPAuth'   => true,
         'Username'   => 'yshabanei@gmail.com',
-        'Password'   => '09102779237aass',
+        'Password'   => 'hvaq iqfe dvxr qkmx',
         'Port'       => 587,
         'setFrom'    => [
             'mail'  =>  'yshabanei@gmail.com',
