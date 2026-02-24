@@ -1,16 +1,15 @@
 <?php
 
 return [
-    'SMTP' => [
-        'Host'       => 'smtp.gmail.com',
-        'SMTPAuth'   => true,
-        'Username'   => 'yshabanei@gmail.com',
-        'Password'   => 'hvaq iqfe dvxr qkmx',
-        'Port'       => 587,
-        'setFrom'    => [
-            'mail'  =>  'yshabanei@gmail.com',
-            'name'  =>  'php-mvc'
+        'SMTP' => [
+            'Host' => 'smtp.gmail.com',
+            'Port' => 587,
+            'Username' => 'yshabanei@gmail.com',
+            'Password' => 'hvaq iqfe dvxr qkmx',
+            'Encryption' => 'tls'
+        ],
+        'From' => [
+            'Address' => 'no-reply@yourdomain.com',
+            'Name' => 'YourAppName'
         ]
-    ]
-];
-
+    ];

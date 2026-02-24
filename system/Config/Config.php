@@ -8,7 +8,7 @@ class Config
 
     private static $instance;
     private $config_nested_array = [];
-    private $config_dot_array = [];
+    public $config_dot_array = [];
 
     private function __construct()
     {
@@ -55,7 +55,7 @@ class Config
     }
 
 
-    private static function getInstance()
+    public static function getInstance()
     {
         if(empty(self::$instance))
         {

@@ -223,3 +223,10 @@ function hasErrors()
     return isset($_SESSION["temporary_errorFlash"])
         && count($_SESSION["temporary_errorFlash"]) > 0;
 }
+
+
+function env($key, $default = null)
+{
+    $value = $_ENV[$key] ?? getenv($key);
+    return $value !== false ? $value : $default;
+}

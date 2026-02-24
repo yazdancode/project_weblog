@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Requests\Auth\ForgotRequest;
 use App\Http\Services\MailService;
 use App\User;
+use System\Config\Config;
 use System\Session\Session;
 
 class ForgotController
@@ -24,15 +25,12 @@ class ForgotController
 
     public function forgot()
     {
-        // جلوگیری از ارسال مجدد تا ۲ دقیقه
         $forgotTime = $this->session->get('forgot.time');
 
         if ($forgotTime && $forgotTime > time()) {
             error('forgot', 'لطفاً ۲ دقیقه صبر کنید و دوباره تلاش کنید');
             return back();
         }
-
-        // ثبت زمان جدید
         $this->session->set('forgot.time', time() + 120);
 
         $request = new ForgotRequest();
@@ -44,15 +42,10 @@ class ForgotController
             error('forgot', 'کاربر وجود ندارد');
             return back();
         }
-
         $user = $user[0];
-
-        // تولید توکن جدید
         $user->remember_token = generateToken();
         $user->remember_token_expire = date("Y-m-d H:i:s", strtotime('+10 minutes'));
         $user->save();
-
-        // ساخت لینک بازیابی
         $resetLink = route('auth.reset-password.view', [$user->remember_token]);
 
         $message = '
